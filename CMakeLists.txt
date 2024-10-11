@@ -13,3 +13,4 @@ add_subdirectory(src/inject)
 
 add_subdirectory(src/core/messages)
 
+add_subdirectory(src/client)
