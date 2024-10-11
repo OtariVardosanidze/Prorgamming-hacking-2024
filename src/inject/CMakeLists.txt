@@ -12,3 +12,5 @@ add_executable(inject
 
 set_target_properties(inject PROPERTIES CXX_STANDARD 17)
 
+target_link_libraries(inject PUBLIC messages)
+target_include_directories(inject PUBLIC ${CMAKE_CURRENT_BINARY_DIR})

@@ -1,8 +1,20 @@
 #include <windows.h>
 #include <iostream>
+#include "../core/messages/test.pb.h"
 
 void main()
 {
+	TestMessage m;
+    m.set_x(10);
+    m.set_y("abc");
+
+    std::cout << m.SerializeAsString() << std::endl;
+
+	std::string s = m.SerializeAsString();
+
+	TestMessage m2;
+	m2.ParseFromString(s);
+
 	STARTUPINFO cif;
 	ZeroMemory(&cif,sizeof(STARTUPINFO));
 	PROCESS_INFORMATION pi;
