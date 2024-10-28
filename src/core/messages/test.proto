@@ -4,3 +4,11 @@ message TestMessage {
     int32 x = 1;
     string y = 2;
 };
+
+
+message Message {
+  string sender = 1;      // Имя отправителя
+  string receiver = 2;    // Имя получателя
+  string content = 3;     // Содержание сообщения
+  int64 timestamp = 4;    // Время отправки
+}

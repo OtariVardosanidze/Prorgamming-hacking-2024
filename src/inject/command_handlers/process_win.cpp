@@ -2,7 +2,7 @@
 #include <iostream>
 #include "../core/messages/test.pb.h"
 
-void main()
+void test()
 {
 	TestMessage m;
     m.set_x(10);

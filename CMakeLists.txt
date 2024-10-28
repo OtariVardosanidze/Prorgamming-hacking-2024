@@ -11,6 +11,6 @@ add_subdirectory(third_party/protobuf EXCLUDE_FROM_ALL)
 
 add_subdirectory(src/inject)
 
-add_subdirectory(src/core/messages)
+add_subdirectory(src/core)
 
 add_subdirectory(src/client)
