@@ -119,6 +119,7 @@ std::unique_ptr<ProcessCommunicator> ProcessLauncher::CreateProcessFunc(const st
 		new ProcessCommunicatorWin(pi.hProcess, std::move(in_pipe), std::move(out_pipe)));
 }
 
+/*
 void main()
 {
 	auto pc = ProcessLauncher::CreateProcessFunc("c:\\windows\\system32\\cmd.exe");
@@ -129,3 +130,4 @@ void main()
 		std::cout << "--";
 	//}
 } 
+*/
