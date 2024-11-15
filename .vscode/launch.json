@@ -25,6 +25,18 @@
             "cwd": "${fileDirname}",
             "environment": [],
             "console": "internalConsole"
+        },
+
+        {
+            "name": "(Windows) LaunchInj",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/build/src/inject/Debug/inject.exe",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${fileDirname}",
+            "environment": [],
+            "console": "newExternalWindow"
         }
 
     ]
