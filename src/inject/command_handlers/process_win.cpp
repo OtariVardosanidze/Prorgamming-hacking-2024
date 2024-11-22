@@ -1,7 +1,6 @@
 #include <windows.h>
 #include <iostream>
-#include "../core/messages/test.pb.h"
-
+/*
 void test()
 {
 	TestMessage m;
@@ -28,3 +27,4 @@ void test()
 			// убрать процесс
 	}
 }
+*/
