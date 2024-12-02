@@ -4,6 +4,9 @@
    Distributed under the MIT License (https://opensource.org/licenses/MIT)
 =============================================================================*/
 #include <elements.hpp>
+
+#include "machine_ui.h"
+
 using namespace cycfi::elements;
 
 class Workspace {
@@ -13,31 +16,12 @@ public:
     }
 };
 
-class Machine {
-public:
-    Machine(const std::string& name) : name(name) {}
-
-
-    auto make_gui() {
-        return label(name);
-    }
-
-    Workspace* get_workspace() {
-        return workspace.get();
-    }
-
-private:
-    std::string name;
-    std::unique_ptr<Workspace> workspace;
-
-};
-
 class MachinesList {
 public:
     MachinesList() {
-        machines.push_back(Machine("Client 1"));
-        machines.push_back(Machine("Client 2"));
-        machines.push_back(Machine("Super puper machine"));
+        machines.push_back(Machine("Client 1", "127.0.0.1:8080"));
+        machines.push_back(Machine("Client 2", "test"));
+        machines.push_back(Machine("Super puper machine", "2313"));
 
     }
 
@@ -46,8 +30,8 @@ public:
     auto make_gui() {
         auto tiles = vtile_composite();
         for (auto& m : machines) {
-            auto gui = m.make_gui();
-            tiles.push_back(share(gui));
+            auto gui = m.render();
+            tiles.push_back(gui);
         }
         auto sections = htile(
             layer(
@@ -116,10 +100,11 @@ int main(int argc, char* argv[])
 
     view view_(_win);
 
-    Applictaion application;
+    //Applictaion application;
 
+    Machine m("test", "address");
     view_.content(
-        margin({ 10, 10, 10, 10 }, application.make_gui())
+        m.render()
     );
 
     _app.run();
