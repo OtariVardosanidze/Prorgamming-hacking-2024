@@ -39,3 +39,20 @@ class ThreadPool {
         return threads.size();
     }
 };
+
+class ThreadPoolMain {
+    private:
+    std::function<void()> on_idle;
+    Queue<std::unique_ptr<Task>> tasks_queue; // use queue instead vector
+    bool quitting = false;
+    std::unique_ptr<Task> WaitTask();
+
+    public:
+    explicit ThreadPoolMain();
+    ~ThreadPoolMain();
+    
+    std::shared_ptr<TaskHandle> AddTask(std::unique_ptr<Task> task); 
+    void Quit();
+    void Run();
+    void OnIdle(std::function<void()> on_idle);
+};

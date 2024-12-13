@@ -18,14 +18,21 @@ void Test(int i) {
     std::cout << i << std::endl;
 }
 
+void onIdle() {
+    std::cout << "Task " << " is processed in MAIN thread " << std::endl;
+    std::this_thread::sleep_for(std::chrono::milliseconds(500));
+    threading::PostTask(threading::Thread::UI, Test, 5);
+}
+
 int main(){
 
-    auto th = threading::PostTask(Test, 10);
-    th->wait();
+    threading::InitializeThreadPool();
 
-    PrintTask pt(9);
-    auto th1 = threading::PostTask(&PrintTask::Process, &pt);
-    th1->wait();
+
+    // Doing other initialization.
+
+    threading::GetMainThreadPool()->OnIdle(onIdle);
+    threading::GetMainThreadPool()->Run();
 
 
     // ThreadPool tp(20);
